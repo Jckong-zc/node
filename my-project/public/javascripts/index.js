@@ -35,7 +35,7 @@ $(() => {
         let data = new FormData();
         data.append("abc", fileNode[0].files[0])
         var email = localStorage.getItem("name");
-        console.log(data)
+        console.log(email)
 
         $.ajax({
             type: "POST",
@@ -50,6 +50,7 @@ $(() => {
                 // var bb = localStorage.setItem("img", aa);
                 $("#img").attr("src", `http://39.96.73.64:3000/${data.file.filename}`)
                 $("#name").html(email)
+
                 console.log(data.file.filename)
             }
         });
