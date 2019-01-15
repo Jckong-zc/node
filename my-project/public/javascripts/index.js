@@ -5,7 +5,8 @@ $(() => {
         location.href = "./login.html"
     })
 
-
+    var email = localStorage.getItem("name");
+    console.log(email)
     let autologin = () => {
         return new Promise((resolve, rejects) => {
             $.ajax({
@@ -34,8 +35,7 @@ $(() => {
         console.log(fileNode[0].files)
         let data = new FormData();
         data.append("abc", fileNode[0].files[0])
-        var email = localStorage.getItem("name");
-        console.log(email)
+
 
         $.ajax({
             type: "POST",
