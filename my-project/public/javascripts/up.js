@@ -3,7 +3,7 @@ $(() => {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:3000/users/findUser",
+                url: "http://39.96.73.64:3000/users/findUser",
                 success(data) {
                     resolve(data)
                 }
@@ -18,7 +18,7 @@ $(() => {
                 headers: {
                     token: localStorage.getItem("token")
                 },
-                url: "http://localhost:3000/users/autologin",
+                url: "http://39.96.73.64:3000/users/autologin",
                 success(res) {
                     console.log(res)
                     resolve(res)
@@ -38,6 +38,7 @@ $(() => {
                             <td>${item.price}</td>
                             <td>${item.city}</td>
                             <td><button type="submit" class="btn btn-primary" id="upbtn"><span>修改</span></button></td>
+                            <td><input type="button" class="btn btn-primary" id="delbtn" value="删除"/></td>
                         </tr> `
             }).join("");
             $("#list").html(html)
@@ -76,7 +77,7 @@ $(() => {
             return new Promise((resolve, reject) => {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:3000/users/up",
+                    url: "http://39.96.73.64:3000/users/up",
                     data: obj,
                     success(res) {
                         resolve(res)
@@ -95,8 +96,48 @@ $(() => {
                             <td>${item.price}</td>
                             <td>${item.city}</td>
                             <td><button type="submit" class="btn btn-primary" id="upbtn"><span>修改</span></button></td>
+                            <td><input type="button" class="btn btn-primary" id="delbtn" value="删除"/></td>
                         </tr>           
                     `
+            }).join("");
+            $("#list").html(html)
+        })()
+        window.location.reload()
+    });
+    $("#list").on("click", "input", function() {
+        console.log($(this))
+        var name = $(this).parent().prevAll().eq(4).text()
+        console.log(name)
+        var obj = {}
+        obj.name = name
+        console.log(obj)
+            // console.log(obj)
+        let getUserList = () => {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    type: "POST",
+                    url: "http://39.96.73.64:3000/users/del",
+                    data: obj,
+                    success(res) {
+                        resolve(res)
+                    }
+                })
+            })
+        };
+        (async() => {
+            let res = await getUserList();
+            let html = res.map((item, idx) => {
+                return `
+                            <tr>
+                                <td>${item._id}</td>
+                                <td>${item.name}</td>
+                                <td>${item.age}</td>
+                                <td>${item.price}</td>
+                                <td>${item.city}</td>
+                                <td><button type="submit" class="btn btn-primary" id="upbtn"><span>修改</span></button></td>
+                                <td><input type="button" class="btn btn-primary" id="delbtn" value="删除"/></td>
+                            </tr>           
+                        `
             }).join("");
             $("#list").html(html)
         })()

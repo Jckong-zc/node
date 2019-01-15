@@ -8,7 +8,7 @@ $(() => {
             if (email == "" && password == "") {
                 alert("信息不能为空")
             } else if (email != "" && re.test(email)) {
-                $.post("http://localhost:3000/users/findemail", {
+                $.post("http://39.96.73.64:3000/users/findemail", {
                     "email": email,
                     "password": password,
                 }, function(res) {
@@ -24,7 +24,7 @@ $(() => {
             location.href = "./login.html"
         })
     })
-    // $.post("http://localhost:3000/users/register", {
+    // $.post("http://39.96.73.64:3000/users/register", {
     //     "email": email,
     //     "password": password,
     // }, function(res) {

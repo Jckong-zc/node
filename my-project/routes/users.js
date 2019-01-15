@@ -29,7 +29,7 @@ router.post('/login', async(req, res, next) => {
                 token: token.createToken({
                         inputEmail,
                         inputPassword
-                    }, 120) //过期时间秒
+                    }, 10000) //过期时间秒
             })
         } else {
             res.send({

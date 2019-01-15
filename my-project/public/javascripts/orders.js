@@ -7,7 +7,7 @@ $(() => {
                 headers: {
                     token: localStorage.getItem("token")
                 },
-                url: "http://localhost:3000/users/autologin",
+                url: "http://39.96.73.64:3000/users/autologin",
                 success(res) {
                     console.log(res)
                     resolve(res)
@@ -34,7 +34,7 @@ $(() => {
             return new Promise((resolve, reject) => {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:3000/users/findUser",
+                    url: "http://39.96.73.64:3000/users/findUser",
                     data: { "name": name },
                     success(data) {
                         resolve(data)
@@ -58,7 +58,7 @@ $(() => {
             } else {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:3000/users/insert",
+                    url: "http://39.96.73.64:3000/users/insert",
                     data: {
                         "name": name,
                         "age": age,

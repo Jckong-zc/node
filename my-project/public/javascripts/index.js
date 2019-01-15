@@ -13,7 +13,7 @@ $(() => {
                 headers: {
                     token: localStorage.getItem("token")
                 },
-                url: "http://localhost:3000/users/autologin",
+                url: "http://39.96.73.64:3000/users/autologin",
                 success(res) {
                     console.log(res)
                     resolve(res)
@@ -39,7 +39,7 @@ $(() => {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/users/upload",
+            url: "http://39.96.73.64:3000/users/upload",
             processData: false,
             contentType: false,
             Header: ("If-Modified-Since", "0"),
@@ -48,12 +48,12 @@ $(() => {
                 // console.log(data)
                 // var aa = data.file.filename
                 // var bb = localStorage.setItem("img", aa);
-                $("#img").attr("src", `http://localhost:3000/${data.file.filename}`)
+                $("#img").attr("src", `http://39.96.73.64:3000/${data.file.filename}`)
                 console.log(data.file.filename)
             }
         });
         fileNode.val()
-            // $("#img").attr("src", `http://localhost:3000/${data.file.filename}`)
+            // $("#img").attr("src", `http://39.96.73.64:3000/${data.file.filename}`)
     })
 
 
