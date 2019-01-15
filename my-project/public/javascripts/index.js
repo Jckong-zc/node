@@ -7,6 +7,7 @@ $(() => {
 
     var email = localStorage.getItem("name");
     console.log(email)
+    $("#name").html(email)
     let autologin = () => {
         return new Promise((resolve, rejects) => {
             $.ajax({
@@ -49,7 +50,7 @@ $(() => {
                 // var aa = data.file.filename
                 // var bb = localStorage.setItem("img", aa);
                 $("#img").attr("src", `http://39.96.73.64:3000/${data.file.filename}`)
-                $("#name").html(email)
+
 
                 console.log(data.file.filename)
             }
