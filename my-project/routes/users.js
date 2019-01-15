@@ -142,13 +142,30 @@ router.post('/up', async(req, res, next) => {
 router.post('/del', async(req, res, next) => {
     let {
 
-        name
+        name,
+        city
     } = req.body
     console.log(req.body)
-    let delt = await del("student", {
-        name
+    for (var i in req.body) {
+        item = i
+    }
+    if (item == "name") {
+        let data = await del(`student`, {
+            name
+        });
+        console.log(data)
+        res.send(data);
+    } else if (item == "city") {
+        let data = await del(`student`, {
+            city
+        });
+        console.log(data)
+        res.send(data);
+    }
+    // let delt = await del("student", {
+    //     name
 
-    });
+    // });
     // console.log(delt)
     console.log(delt.toString())
     res.send(delt);
