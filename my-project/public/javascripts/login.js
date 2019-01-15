@@ -25,6 +25,7 @@ $(() => {
         // console.log(data)
         if (data.status === 'success') {
             localStorage.setItem("token", data.token);
+            localStorage.setItem("name", inputEmail);
             location.href = "../index.html";
         } else {
             alert('帐号密码错误');

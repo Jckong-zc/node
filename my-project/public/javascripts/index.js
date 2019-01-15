@@ -34,7 +34,7 @@ $(() => {
         console.log(fileNode[0].files)
         let data = new FormData();
         data.append("abc", fileNode[0].files[0])
-
+        var email = localStorage.getItem("name");
         console.log(data)
 
         $.ajax({
@@ -49,6 +49,7 @@ $(() => {
                 // var aa = data.file.filename
                 // var bb = localStorage.setItem("img", aa);
                 $("#img").attr("src", `http://39.96.73.64:3000/${data.file.filename}`)
+                $("#name").html(email)
                 console.log(data.file.filename)
             }
         });
